@@ -1,0 +1,3 @@
+[submodule "public/javascripts/alexbmobile"]
+	path = public/javascripts/alexbmobile
+	url = git@github.com:AlexandreBernard/AlexbMobile.git
