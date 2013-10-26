@@ -6,14 +6,14 @@ class MobileDevice
     @agent = (agent || '').downcase
     
     @devices = {
-      iphone:   { type: 'mobile', device: 'iPhone', os: 'iOS', package: 'app' },
-      ipad:     { type: 'tablet', device: 'iPad', os: 'iOS', package: 'app' },
-      android:  { type: 'mobile', device: 'generic', os: 'Android', package: 'app' },
-      winphone: { type: 'mobile', device: 'generic', os: 'Windows Phone', package: 'app' },
-      blackberry:  { type: 'mobile', device: 'generic', os: 'BlackBerry', package: 'app' },
-      chrome:   { type: 'desktop', device: 'generic', os: 'desktop', package: 'app' },
-      safari:   { type: 'desktop', device: 'generic', os: 'desktop', package: 'app' },
-      generic:  { type: 'generic', device: 'generic', os: 'generic', package: 'app' }
+      iphone:   { type: 'mobile', device: 'iPhone', os: 'iOS', package: 'app.min' },
+      ipad:     { type: 'tablet', device: 'iPad', os: 'iOS', package: 'app.min' },
+      android:  { type: 'mobile', device: 'generic', os: 'Android', package: 'app.min' },
+      winphone: { type: 'mobile', device: 'generic', os: 'Windows Phone', package: 'app.min' },
+      blackberry:  { type: 'mobile', device: 'generic', os: 'BlackBerry', package: 'app.min' },
+      chrome:   { type: 'desktop', device: 'generic', os: 'desktop', package: 'app.min' },
+      safari:   { type: 'desktop', device: 'generic', os: 'desktop', package: 'app.min' },
+      generic:  { type: 'generic', device: 'generic', os: 'generic', package: 'app.min' }
     }
   end
   
