@@ -100,6 +100,26 @@ var App = {
     clone.remove();
     
     return height;
+  },
+  
+  get_position: function(callback){
+    
+    callback({ latitude: 52.495971, longitude: 13.453954 });
+    
+    return false;
+    if(navigator.geolocation){
+      navigator.geolocation.getCurrentPosition(
+        function(position){
+          callback({ latitude: position.coords.latitude, longitude: position.coords.longitude });
+        },
+        function(error){
+          callback({ latitude: null, longitude: null });
+        }
+      );
+    }
+    else {
+      callback(false);
+    }
   }
     
 };

@@ -1,46 +1,7 @@
 Behaviors.place_selector = {
-
-  initialize: function(){
-    
-  },
   
-  select_place: function(){
-    this.$el.find('textarea').blur();
-    
-    var selector = $(Templates.place_selector), view = this;
-    
-    selector.css({ position: 'absolute', 'min-width': $(window).width(), 'min-height': $(window).height(), top: $(window).height() });
-    this.$el.append(selector);
-    
-    selector.find('a.cancel').link({
-      run: function(e){
-        e.preventDefault();
-        App.cancel_requests();
-        view.close_selector(selector);
-      }
-    });
-    
-    selector.find('form.search').on('submit', function(e){
-      e.preventDefault();
-      view.refresh_places($(e.target).find('input[name=q]').val());
-    });
-    
-    Animation.move_element(selector, {
-      y: -$(window).height(),
-      end: function(){
-        view.$el.find('form.status').hide();
-        view.selector_styles = selector.attr('style');
-        selector.attr('style', '');
-        view.refresh_places();
-        
-        var foursquare = $('<p class="foursquare_powered"><span>Powered by Foursquare</span></p>');
-        foursquare.css({ opacity: 0 });
-        $('#above').append(foursquare);
-        foursquare.animate({ opacity: 1 });
-        
-        App.track('Post Status', 'Place Selector Opened');
-      }
-    });
+  initialize: function(){
+    this.places = {};
   },
   
   refresh_places: function(query){
@@ -68,7 +29,7 @@ Behaviors.place_selector = {
         dataType: 'json',
         success: function(response){
           if(response.response.venues && response.response.venues.length > 0){
-            view.display_places(response.response.venues);
+            view.run('display_places', [response.response.venues]);
           }
         }
       }));
@@ -103,40 +64,21 @@ Behaviors.place_selector = {
       var item = $('<li><a href="#" data-id="'+ places[i].id +'"></a></li>');
       item.find('a')
         .append('<strong>'+ places[i].name +'</strong>')
-        .append('<span>'+ this.foursquare_location(places[i]) +'</span>');
+        .append('<span>'+ this.behaviors.place_selector.foursquare_location(places[i]) +'</span>');
       
       list.append(item);
       
-      this.initialize_place_item(item);
+      item.find('a').link({
+        run: function(e){
+          e.preventDefault();
+          view.run('use_place', [places[i], item]);
+        }
+      });
       
       this.places[places[i].id] = places[i];
     }
     
     Nav.run('resize');
-  },
-  
-  use_place: function(place_id){
-    this.place = this.places[place_id];
-    
-    this.$el.find('div.added_medias').find('p.place').remove();
-    
-    var place = $('<p class="place"><a href="#"></a></p>'), view = this;
-    
-    place.find("a")
-      .append('<strong>'+ this.place.name +'</strong>')
-      .append('<span>'+ this.foursquare_location(this.place) +'</span>')
-      .link({
-        run: function(e){
-          e.preventDefault();
-          view.delete_menu(this, 'place', view.place.id);
-        }
-      });
-    
-    this.$el.find('div.added_medias').append(place);
-    
-    this.close_selector(this.$el.find('div.place_selector'));
-    
-    App.track('Post Status', 'Place Added');
   },
   
   foursquare_location: function(place){

@@ -37,13 +37,17 @@ a:hover 	{ outline:none; }
 }
 
 header {
-  height:44px; background:#333; color:#FFF; position:fixed; top:0; left:0; right:0; z-index:50;
+  height:44px; background:#37AB2F; color:#FFF; position:fixed; top:0; left:0; right:0; z-index:50;
   
-  h1 { .font-thin(); text-align:center; line-height:44px; }
+  h1 { .font-thin(); text-align:center; line-height:44px; text-indent:-9000px; background-position:center; }
 }
 
 div.page {
-  padding:10px;
+  background:#f0eded; z-index:1; position:relative;
+  
+  div.wrap {
+    padding:10px;
+  }
 }
 
 div.invite {
@@ -99,5 +103,48 @@ div.submit  {
   
   .btn  {
     margin:0 auto;
+  }
+}
+
+div.place_selector		{
+  div.current_location {
+    background-color:#FFF; box-shadow:0 1px 0px 0px rgba(0, 0, 0, .16); overflow:hidden; border-radius:3px; margin:0 0 8px 0;
+    height:40px; padding:0 8px; line-height:40px;
+    
+    p {
+      padding:0 0 0 28px; background-position:center left;
+    }
+    a {
+      line-height:40px; font-size:1.2em;
+    }
+    span {
+      display:block; background-position:center right;
+    }
+  }
+  
+  div.foursquare {
+    background-color:#FFF; box-shadow:0 1px 0px 0px rgba(0, 0, 0, .16); overflow:hidden; border-radius:3px; margin:0 0 8px 0;
+    p.search {
+      margin:0 8px;
+      input { display:block; width:100%; height:40px; line-height:40px; text-indent:23px; font-size:1.1em; .font-normal(); color:#7d7c7c; background-position:center left; }
+    }
+    p.powered {
+      border-top:1px solid #DDD;
+      height:30px; text-indent:-9000px; background-position:center;
+    }
+  }
+  
+  ul.places {
+    li {
+      padding:10px; border-top:1px solid #DDD;
+      
+      a {
+        display:block; background-position:center right;
+      }
+      
+      strong {
+        display:block; color:#333; font-size:1.1em; line-height:1.3em;
+      }
+    }
   }
 }
