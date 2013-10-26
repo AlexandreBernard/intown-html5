@@ -57,73 +57,65 @@ div.invitation {
     padding:34px 38px; background:#2D9226; text-align:center;
   }
   
-  div.info {
-    width:280px; margin:28px auto;
-    
-    p {
-      padding:0 0 16px 34px; background-position:0px 6px;
-    }
-    
-    p.start {
-      margin-top:8px;
-    }
-    
-    a {
-      color:#FFF; border-bottom:1px solid #FFF; padding:0 32px 4px 0; .font-normal(); background-position:center right;
-    }
+  div.info a { color:#FFF; border-bottom:1px solid #FFF; }
+}
+
+div.info {
+  width:280px; margin:28px auto;
+  
+  p {
+    padding:0 0 16px 34px; background-position:0px 6px;
+  }
+  
+  p.start {
+    margin-top:8px;
+  }
+  
+  p.start a {
+    padding:0 32px 4px 0; .font-normal(); background-position:center right; color:#37AB2F; border-bottom:1px solid #37AB2F;
   }
 }
 
 div.schedule {
   background:#FFF;
-}
-
-div.invite {
-  margin:0 0 16px 0;
-
-  p.title  {
-    padding:0 0 .8em 0; font-size:1.2em; color:#333; line-height:1.3em;
+  
+  div.title {
+    position:relative; padding:38px 30px 52px 30px; background:#EEE; color:#999999; text-align:center; font-size:1.8em;
   }
   
-  p.location {
-    height:30px; margin:0 0 6px 0; line-height:30px; text-indent:28px; font-size:1.8em; background-position:center left;
+  nav.steps {
+    position:absolute; bottom:0; left:0; right:0;
   }
   
-  p.time {
-    padding:0 0 0 28px; font-size:1.2em; .font-thin(); line-height:1.5em; color:#999;
-    span {
-      color:#333;
-    }
+  p.start a {
+    font-size:1.8em; line-height:1.4em;
   }
 }
 
-.group {
-  background-color:#FFF; box-shadow:0 1px 0px 0px rgba(0, 0, 0, .16); overflow:hidden; min-height:44px; border-radius:3px;
-  
-  li, .group-item {
-    display:block; border-bottom:1px solid #DCD9D9;
-  }
-  
-  li:last-child, .group-item:last-child {
-    border-bottom:none;
-  }
+h3 { color:#555555; font-size:1.8em; text-align:center; padding:0 0 6px 0; }
+
+div.day {
+  border-bottom:1px solid #CCC; padding:16px 25px 24px 25px;
 }
-
-h2 { border-bottom:1px solid #CCC; height:40px; line-height:40px; text-align:center; margin:0 0 10px 0; }
-h3 { margin:0 0 6px 0; font-size:1em; color:#939393; text-align:center; .font-bold(); }
-
-nav.steps { text-align:center; margin:0 0 6px 0; }
-nav.steps span  { display:inline-block; width:8px; height:8px; margin:0 2px; border-radius:4px; background:rgba(0, 0, 0, .4); }
 
 ul.availabilities {
-  text-align:center; margin:0 0 10px 0;
+  width:232px; overflow:hidden;
   li {
-    display:inline-block; margin:0 3px 3px 0; border-radius:3px; background-color:#FFF; box-shadow:0 1px 0px 0px rgba(0, 0, 0, .16);
+    float:left; margin:0 5px 5px 0;
   }
-  label { display:inline-block; color:#4B4949; height:40px; line-height:40px; width:70px; padding:0 10px 0 14px; text-align:left; }
-  input {
-    float:right; width:13px; height:13px; margin:14px 0 0 0; -webkit-appearance:none;
+  a {
+    display:block; .font-bold(); color:#999; border:1px solid #F8C534; border-radius:4px; width:70px; height:40px; line-height:40px; text-align:center;
   }
+  a.on {
+    background:#F8C534; color:#FFF;
+  }
+}
+
+nav.steps {
+  text-align:center; margin:0 0 6px 0;
+  span  { display:inline-block; width:6px; height:6px; margin:0 2px; border-radius:4px; background:rgba(0, 0, 0, .3); }
+  span.on { background:rgba(0, 0, 0, .8); }
+  span.done { background:#37AB2F; }
 }
 
 div.submit  {
