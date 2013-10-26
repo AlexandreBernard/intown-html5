@@ -1,0 +1,19 @@
+/* images */
+@img_root: "/images/x@{ratio}";
+
+.bgimg(@filename; @size: auto auto){
+  @url: "@{img_root}/@{filename}";
+  
+  background-image: url(@url);
+  background-size: @size;
+}
+
+div.invite {
+  p.location { .bgimg('icon-location.png', 20px auto); }
+  p.time { .bgimg('icon-time.png', 20px auto); }
+}
+
+ul.availabilities input:checked { .bgimg('check.png', 13px auto); }
+
+div.input.check input { .bgimg('checkbox.png', 20px auto); }
+div.input.check input:checked { .bgimg('checkbox-checked.png', 20px auto); }

@@ -1,0 +1,47 @@
+h1. BonjourBonjour Webapp
+
+h2. Install
+
+1. Clone repository with submodules
+
+git clone --recursive git@github.com:MobileAmusement/webapp.git
+
+2. Install required gems. Use ruby 1.9.3. If you use RVM, gemset will be automatically created when cd to directory.
+
+<pre>
+  bundle install
+</pre>
+
+3. Configure your environment
+
+Copy /environments/development.example.rb to /environments/development.rb and make the configuration match with your machine.
+
+h2. Daily usage
+
+1. Launch sinatra server
+
+<pre>
+  ruby server.rb
+</pre>
+
+2. Open your browser and go to http://localhost:4567 or your mobile device and type http://yourip:4567
+
+h2. Production mode
+
+To test the app with assets packaged as in production simply do :
+
+1. Compile javascripts and stylesheets
+
+<pre>
+  ruby build.rb
+</pre>
+
+2. Launch you server in production mode
+
+if you want to test production environment type :
+
+<pre>
+  ruby server.rb -e production
+</pre>
+
+3. Open your browser and go to http://localhost:4567 or your mobile device and type http://yourip:4567

@@ -1,0 +1,25 @@
+/* buttons */
+.btn		{
+  display:block; color:#FFF; font-size:1em; padding:8px 12px 8px 12px; cursor:pointer;
+  border-radius:3px; border:1px solid #306D98; -webkit-box-sizing:border-box; box-sizing:border-box; -webkit-appearance:none;
+  box-shadow:inset 0 2px 4px 0 #61b9ed; text-shadow:0 0 2px #185b82;
+  font-family: "HelveticaNeueBold", "HelveticaNeue-Bold", "Helvetica Neue Bold", "HelveticaNeue", "Helvetica Neue", 'TeXGyreHerosBold', "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif; font-weight:600; font-stretch:normal;
+  background:#5096C7; background:-webkit-gradient(linear, left top, left bottom, from(#52abdf), to(#2b86bb));
+
+  &.hover	{ background:-webkit-gradient(linear, left top, left bottom, from(#2b86bb), to(#52abdf)); text-shadow:none; }
+  &.cancel, &.disabled		{
+    border-color:#B8B9BA; color:#6c6b6b; text-shadow:0 0 2px #FEFEFE; box-shadow:inset 0 2px 2px 0 #FEFEFE;
+    background:#F2F2F2; background:-webkit-gradient(linear, left top, left bottom, from(#fafafa), to(#eceded));
+  }
+  &.cancel.hover	{ background:-webkit-gradient(linear, left top, left bottom, from(#eceded), to(#fafafa)); }
+  &.disabled		{ color:#BBB; }
+  &.big { height:40px; padding:10px 14px 10px 14px; font-size: 1.15em; text-align:center; }
+  &.pending {
+    border:1px solid #1a6b9a; text-shadow:0 0 2px #49b8fa; background:#419bcf; box-shadow:inset 0 2px 2px 0 #61b9ed; color:#17628d;
+  }
+  &.reply {
+    border:1px solid #9d3124; text-shadow:0 0 2px #8f2d20;
+    background:-webkit-gradient(linear, left top, left bottom, from(#e55b4a), to(#c94a3a)); box-shadow:inset 0 2px 2px 0 #ef7e70;
+  }
+  &.reply.hover	{ background:-webkit-gradient(linear, left top, left bottom, from(#c94a3a), to(#e55b4a)); }
+}

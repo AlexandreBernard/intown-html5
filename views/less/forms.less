@@ -1,0 +1,173 @@
+/* forms styles */
+.single-input(){
+  padding:8px 6px 7px 6px; background:#f0eded; color:#585656; border:1px solid rgba(0, 0, 0, .17); border-radius:3px; font-size:1em;
+  -webkit-box-sizing:border-box; box-sizing:border-box; -webkit-appearance:none;
+}
+
+div.step {
+  p.info.bottom {
+    text-align:center;
+    position:absolute;
+    top:100px;
+  }
+
+  p.error {
+    color:#CF5242;
+    text-align:center;
+    font-size:11px;
+    margin-top:10px;
+  }
+}
+
+div.input {
+  label {
+    position:absolute; width:33%; display:block; height:44px; line-height:44px; color:#4B4949; text-indent:16px;
+  }
+
+  &.yes input, &.error input {
+    background-repeat:no-repeat; background-position:center right;
+  }
+
+  &.check {
+    background-color:transparent; box-shadow:none;
+
+    label {
+      position:static; width:100%;
+    }
+
+    &.cgu {
+      position:absolute; bottom:0; box-shadow:none; min-height:0px; border-bottom:none;
+    }
+
+    a {
+      font-weight:500;
+    }
+
+    input {
+      border:none;
+      cursor:pointer;
+    }
+  }
+
+  &.text, &.date {
+    padding:0; height:44px;
+  }
+
+  &.textarea {
+    border-bottom:none; border-radius:3px;
+    label { width:22%; }
+    textarea {
+      display:block; width:76%; margin:15px 2% 10px 22%; height:50px; color:#939393; .font-normal(); font-size:1em;
+      -webkit-box-sizing:border-box; box-sizing:border-box; -webkit-appearance:none;
+    }
+  }
+
+  &.text input, &.date input {
+    display:block; width:65%; margin:10px 2% 10px 33%; height:24px; color:#939393; .font-normal(); font-size:1em;
+    -webkit-box-sizing:border-box; box-sizing:border-box; -webkit-appearance:none;
+  }
+
+  &.text.wide_label input {
+    width:55%; margin-left:43%;
+  }
+
+  &.text.wide_label label {
+    width:43%;
+  }
+
+  &.date.wide_label input {
+    width:55%; margin-left:43%;
+  }
+
+  &.date.wide_label label {
+    width:43%;
+  }
+
+  &.password.wide_label input {
+    width:55%; margin-left:43%;
+  }
+
+  &.password.wide_label label {
+    width:43%;
+  }
+
+  &.password_confirmation.wide_label input {
+    width:55%; margin-left:43%;
+  }
+
+  &.password_confirmation.wide_label label {
+    width:43%;
+  }
+
+  &.switch {
+    label { position:static; width:auto; }
+    input {
+      float:right; width:67px; height:25px; margin:10px 3% 0 0; -webkit-box-sizing:border-box; box-sizing:border-box; -webkit-appearance:none; background-color:transparent;
+    }
+  }
+}
+
+div.input.select select, select {
+  display:block; width:100%; height:44px; line-height:44px; background:transparent; color:#939393; .font-normal(); font-size:1em;
+  -webkit-box-sizing:border-box; box-sizing:border-box; -webkit-appearance:none; text-indent:33%;
+
+  option {
+    margin:0 0 0 33%;
+  }
+}
+
+/* camera input */
+div.input.camera  {
+  width:135px; height:135px; margin:0 auto; background-position:center; border-radius:3px; border:none;
+  input, a.input {
+    -webkit-appearance:none; background:none; display:block; width:135px; height:135px; cursor:pointer; text-indent:-9000px; color:#FFF;
+    background-repeat:no-repeat; background-position:center;
+  }
+}
+
+ul.capture_choices {
+  position:absolute; padding:10px 10px 0 10px; bottom:0; right:0; left:0; text-align:center; background:rgba(0, 0, 0, .5);
+  li {
+    padding-bottom:10px;
+  }
+}
+
+/* gender switch */
+div.input.gender {
+  width:48%; float:left; margin-bottom:9px; border-bottom:none; border-radius:3px;
+
+  &:first-child {
+    margin-right:4%;
+  }
+
+  label {
+    position:static; width:auto; cursor:pointer; text-indent:0;
+  }
+
+  input {
+    float:left; width:26px; height:44px; margin:0 0 0 10px; -webkit-appearance:none; background-position:center;
+
+    &:checked {
+      -webkit-appearance:none; background-color:transparent;
+    }
+  }
+
+}
+
+div.input.radio input, input.radio.cloned, div.radius input, div.radius input.cloned	{
+  float:left; margin:-1px 0 0 0; clear:both; -webkit-appearance:none; width:18px; height:18px; background-position:center; background-color:transparent;
+}
+
+div.input.check input, input.cloned.checkbox {
+  display:block; float:right; margin:12px 12px 0 0; width:20px; height:20px; -webkit-appearance:none; overflow:hidden;
+}
+
+div.line {
+  padding:0 0 10px 0;
+}
+
+div.radius     				{ width:276px; margin:0 auto 16px auto; }
+div.radius span.line	{ position:absolute; display:block; top:7px; left:23px; right:23px; height:2px; background:#E1E0E0; }
+div.radius input			{ width:46px; float:none; }
+div.radius label			{ display:inline-block; width:46px; overflow:hidden; }
+div.radius label span	{ display:block; }

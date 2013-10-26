@@ -1,0 +1,4 @@
+API_URL = 'http://api.bonjourbonjour.net'
+ASSETS_URL = API_URL
+FACEBOOK_APPID = '266758326681082'
+GA = 'UA-36540408-1'
