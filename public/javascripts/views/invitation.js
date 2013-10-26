@@ -1,6 +1,6 @@
 Views.invitation = Backbone.View.extend({
   
-  className: 'page',
+  className: 'invitation',
   
   initialize: function(){
     this.attach_behavior('place_selector');
@@ -13,6 +13,13 @@ Views.invitation = Backbone.View.extend({
   
   before_transition: function(){
     var view = this;
+    
+    this.$el.find('p.start a').link({
+      run: function(e, url){
+        e.preventDefault();
+        Nav.go(url, 'slide');
+      }
+    });
     
     this.$el.find('a.add_place').link({
       run: function(e){

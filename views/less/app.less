@@ -14,8 +14,8 @@
 }
 
 body    {
-  .font-normal();
-  background:#f0eded;
+  .font-thin();
+  background:#37AB2F;
   font-size:80%; color:#555; -webkit-font-smoothing:antialiased; overflow-x:hidden;
   -webkit-user-select:none;
 }
@@ -48,6 +48,34 @@ div.page {
   div.wrap {
     padding:10px;
   }
+}
+
+div.invitation {
+  background:#37AB2F; color:#FFF; font-size:1.8em; line-height:1.4em;
+  
+  p.title {
+    padding:34px 38px; background:#2D9226; text-align:center;
+  }
+  
+  div.info {
+    width:280px; margin:28px auto;
+    
+    p {
+      padding:0 0 16px 34px; background-position:0px 6px;
+    }
+    
+    p.start {
+      margin-top:8px;
+    }
+    
+    a {
+      color:#FFF; border-bottom:1px solid #FFF; padding:0 32px 4px 0; .font-normal(); background-position:center right;
+    }
+  }
+}
+
+div.schedule {
+  background:#FFF;
 }
 
 div.invite {

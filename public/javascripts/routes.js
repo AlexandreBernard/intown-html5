@@ -1,7 +1,8 @@
 var Routes = {
   
   routes: {
-    "*actions":     "invitation"
+    "schedule":    "schedule",
+    "*actions":    "invitation"
   }
   
 };
