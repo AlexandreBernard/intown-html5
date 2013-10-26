@@ -109,7 +109,7 @@ div.submit  {
 div.place_selector		{
   div.current_location {
     background-color:#FFF; box-shadow:0 1px 0px 0px rgba(0, 0, 0, .16); overflow:hidden; border-radius:3px; margin:0 0 8px 0;
-    height:40px; padding:0 8px; line-height:40px;
+    padding:0 8px; line-height:40px;
     
     p {
       padding:0 0 0 28px; background-position:center left;
@@ -119,6 +119,10 @@ div.place_selector		{
     }
     span {
       display:block; background-position:center right;
+    }
+    
+    div.map {
+      height:280px; margin:0 0 8px 0; border-top:1px solid #DDD;
     }
   }
   
@@ -141,6 +145,7 @@ div.place_selector		{
       a {
         display:block; background-position:center right;
       }
+      a.hover, a.hover strong { color:#37AB2F; }
       
       strong {
         display:block; color:#333; font-size:1.1em; line-height:1.3em;

@@ -49,7 +49,7 @@ Views.invitation = Backbone.View.extend({
         
         geocoder.geocode({'latLng': position }, function(results, status){
           if(status == google.maps.GeocoderStatus.OK && results.length > 0){
-            view.use_current_location(results[1]);
+            view.use_current_location(results[1], position);
           }
           else {
             // geocoding fails
@@ -62,13 +62,34 @@ Views.invitation = Backbone.View.extend({
     });
   },
   
-  use_current_location: function(address){
+  use_current_location: function(address, position){
     this.$el.find('div.current_location p').html('<span class="location selected">'+ address.formatted_address +'</span>');
+    
+    var map = $('<div class="map" />'), view = this;
+    
+    this.$el.find('div.current_location').append(map);
+    
+    var gmap = new google.maps.Map(map.get(0), {
+      zoom: 14,
+      center: position,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+    
+    var marker = new google.maps.Marker({
+      position: position,
+      map: gmap
+    });
+    
+    google.maps.event.addListener(gmap, 'center_changed', function() {
+      marker.setPosition(gmap.getCenter());
+    });
+    
+    Nav.run('resize');
   },
   
   use_place: function(place, item){
     this.$el.find('ul.places li').removeClass('selected');
     item.addClass('selected');
-  },
-    
+  }
+  
 });
