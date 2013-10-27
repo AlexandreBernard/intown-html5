@@ -79,18 +79,18 @@ Views.schedule = Backbone.View.extend({
   },
   
   toggle: function(day, slot){
-    var day = new Date(day), slot = parseInt(slot), date = day.getFullYear()+'-'+ App.date_number(day.getMonth()) +'-'+ App.date_number(day.getDate());
+    var day = new Date(day), slot = parseInt(slot), date = day.getFullYear()+'-'+ App.date_number(day.getMonth() + 1) +'-'+ App.date_number(day.getDate());
     
     App.reply.timeslots = App.reply.timeslots || {};
-    App.reply.timeslots[day] = App.reply.timeslots[day] || [];
+    App.reply.timeslots[date] = App.reply.timeslots[date] || [];
     
-    if(_.indexOf(App.reply.timeslots[day], slot) == -1){
-      App.reply.timeslots[day].push(slot);
+    if(_.indexOf(App.reply.timeslots[date], slot) == -1){
+      App.reply.timeslots[date].push(slot);
     }
     else {
-      App.reply.timeslots[day] = _(App.reply.timeslots[day]).without(slot);
-      if(App.reply.timeslots[day].length == 0){
-        delete App.reply.timeslots[day];
+      App.reply.timeslots[date] = _(App.reply.timeslots[date]).without(slot);
+      if(App.reply.timeslots[date].length == 0){
+        delete App.reply.timeslots[date];
       }
     }
     

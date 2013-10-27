@@ -1,6 +1,7 @@
 var Routes = {
   
   routes: {
+    "recommend":   "recommend",
     "decline":     "decline",
     "complete":    "complete",
     "place":       "place",

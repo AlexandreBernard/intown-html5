@@ -1,0 +1,17 @@
+div.schedule
+  div.title
+    p
+      = "Tell "
+      strong {name}
+      = " where to go"
+  
+  div.place
+    form class="foursquare"
+      p.search
+        input type="search" name="q" placeholder="In a public location"
+      p.send
+        input type="submit" value="Ok"
+      ul.places
+      p.powered
+        | Powered by Foursquare
+  

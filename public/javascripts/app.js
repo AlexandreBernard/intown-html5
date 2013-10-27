@@ -1,7 +1,10 @@
 var App = {
   
   params: {
-    os_offset: 0
+    os_offset: 0,
+    foursquare: {
+      client_id: '4SIMQ4JDF4JFUKV1XY52C1UB4ZBOJNX5XSXT3YUF2UNBP10N'
+    }
   },
   
   reply: { timeslots: {}, location: {} },
@@ -10,6 +13,8 @@ var App = {
     if(Env.device.device == 'iPhone' && Env.device.version < 7){
       this.params.os_offset = 60;
     }
+    
+    this.intercept_foursquare_token();
     
     var meeting_id = window.location.hash.replace('#', '');
     
@@ -236,6 +241,33 @@ var App = {
     }
     else {
       callback(false);
+    }
+  },
+  
+  authenticate_foursquare: function(){
+    var url = "https://foursquare.com/oauth2/authenticate", params = {
+      client_id: App.params.foursquare.client_id,
+      response_type: 'token',
+      redirect_uri: window.location.href.split('#')[0]
+    }
+    
+    window.location.href = url + '?' + $.param(params);
+  },
+  
+  intercept_foursquare_token: function(){
+    if(window.location.hash.indexOf('access_token') > -1){
+      var token = window.location.hash.split('#').reverse()[0].split('=').reverse()[0];
+      
+      if(window.localStorage){
+        window.localStorage.setItem('foursquare_token', token);
+      }
+      
+      window.location.replace('#recommend');
+    }
+    else {
+      if(window.localStorage && window.localStorage.getItem('foursquare_token')){
+        App.foursquare_token = window.localStorage.getItem('foursquare_token');
+      }
     }
   }
     

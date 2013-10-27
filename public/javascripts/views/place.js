@@ -94,7 +94,7 @@ Views.place = Backbone.View.extend({
       google.maps.event.addListener(gmap, 'center_changed', function(){
         var new_pos = gmap.getCenter();
         marker.setPosition(new_pos);
-        view.update_location({ latitude: new_pos.lat(), longitude: new_pos.lng(), foursquare: null });
+        view.update_location({ latitude: new_pos.lat(), longitude: new_pos.lng() });
       });
     }
     else {
@@ -102,7 +102,7 @@ Views.place = Backbone.View.extend({
     }
     
     this.$el.find('div.current_location').addClass('on');
-    this.update_location({ latitude: position.lat(), longitude: position.lng(), foursquare: null });
+    this.update_location({ latitude: position.lat(), longitude: position.lng() });
     
     Nav.run('resize');
   },
@@ -123,17 +123,16 @@ Views.place = Backbone.View.extend({
   
   complete_meeting: function(){
     
-    
     App.loader();
     
-    window.setTimeout(function(){
+    App.send_reply(function(){
       Nav.go('/complete', 'slide', { after_transition: function(){
         if(App.loader_elmt){
           App.loader_elmt.remove();
           App.loader_elmt = null;
         }
       }});
-    }, 2000);
+    });
     
   }
 

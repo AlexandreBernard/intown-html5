@@ -4,7 +4,7 @@ Behaviors.place_selector = {
     this.places = {};
   },
   
-  refresh_places: function(query){
+  refresh_places: function(query, options){
     var view = this, loader = $('<span class="bjr_loader"><span></span></span>');
     
     loader.css({ position: 'absolute', top:160, left: '50%', 'margin-left': -14 });
@@ -13,10 +13,16 @@ Behaviors.place_selector = {
     
     App.get_position(function(position){
       var params = {
-        client_id:      'ZNUYQTMM3XBUIERAHHVVDYAO3FR4C22C05RMYCHC3DHBMPK3',
-        client_secret:  'FI5GYAZ0S2XZOJLYZISOW5QPPW3RAMZHLKWEQMDQHY1BQNC0',
         ll:             position.latitude +','+ position.longitude,
         v:              "20130823"
+      };
+      
+      if(App.foursquare_token){
+        params.oauth_token = App.foursquare_token;
+      }
+      else {
+        params.client_id = App.params.foursquare.client_id;
+        params.client_secret = 'CAHKQWBRYE3W33VLHFNLAUEEMZJ5H124JDCXSPZW0SUORM0P'; // this is very bad and would not be in a production version, of course
       }
       
       if(query && query.length > 0){
