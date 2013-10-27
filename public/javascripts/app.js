@@ -156,7 +156,7 @@ var App = {
   },
   
   loader: function(){
-    $.scrolltop(0);
+    $.scrollTop(0);
     
     App.loader_elmt = $('<div class="loader"><span></span></div>');
     
