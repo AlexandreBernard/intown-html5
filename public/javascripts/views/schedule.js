@@ -2,23 +2,32 @@ Views.schedule = Backbone.View.extend({
 
   className: 'schedule',
 
-  initialize: function(){
-    this.attach_behavior('place_selector');
-  },
-
   render: function(){
     this.$el.html($(Templates.schedule).html());
     
     var days = ["October 26th 2013", "October 27th 2013"];
     for(var i=0; i<days.length; i++){
       var item = this.build_day(days[i]);
-      
-      this.init_day(item);
-      
       this.$el.find('div.days').append(item);
     }
     
     return this;
+  },
+  
+  before_transition: function(){
+    this.$el.find('div.days a').link({
+      run: function(e){
+        e.preventDefault();
+        this.toggleClass('on');
+      }
+    });
+    
+    this.$el.find('p.start a').link({
+      run: function(e, url){
+        e.preventDefault();
+        Nav.go(url, 'slide');
+      }
+    });
   },
   
   build_day: function(day){
@@ -32,15 +41,6 @@ Views.schedule = Backbone.View.extend({
     }
         
     return html;
-  },
-  
-  init_day: function(item){
-    item.find('a').link({
-      run: function(e){
-        e.preventDefault();
-        this.toggleClass('on');
-      }
-    });
   }
   
 });

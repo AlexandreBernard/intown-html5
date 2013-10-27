@@ -50,16 +50,6 @@ div.page {
   }
 }
 
-div.invitation {
-  background:#37AB2F; color:#FFF; font-size:1.8em; line-height:1.4em;
-  
-  p.title {
-    padding:34px 38px; background:#2D9226; text-align:center;
-  }
-  
-  div.info a { color:#FFF; border-bottom:1px solid #FFF; }
-}
-
 div.info {
   width:280px; margin:28px auto;
   
@@ -68,12 +58,22 @@ div.info {
   }
   
   p.start {
-    margin-top:8px;
+    margin:8px 0 0 0; padding:0; text-align:center;
   }
   
   p.start a {
     padding:0 32px 4px 0; .font-normal(); background-position:center right; color:#37AB2F; border-bottom:1px solid #37AB2F;
   }
+}
+
+div.invitation {
+  background:#37AB2F; color:#FFF; font-size:1.8em; line-height:1.4em;
+
+  p.title {
+    padding:34px 38px; background:#2D9226; text-align:center;
+  }
+  div.info p.start { padding-left:34px; text-align:left; }
+  div.info p.start a { color:#FFF; border-bottom:1px solid #FFF; }
 }
 
 div.schedule {
@@ -95,7 +95,7 @@ div.schedule {
 h3 { color:#555555; font-size:1.8em; text-align:center; padding:0 0 6px 0; }
 
 div.day {
-  border-bottom:1px solid #CCC; padding:16px 25px 24px 25px;
+  border-bottom:1px solid #DDD; padding:16px 25px 24px 25px;
 }
 
 ul.availabilities {
@@ -126,19 +126,22 @@ div.submit  {
   }
 }
 
-div.place_selector		{
+div.place	{
+  margin:20px 10px;
+
   div.current_location {
-    background-color:#FFF; box-shadow:0 1px 0px 0px rgba(0, 0, 0, .16); overflow:hidden; border-radius:3px; margin:0 0 8px 0;
-    padding:0 8px; line-height:40px;
+    line-height:44px;
+    
+    &.on {
+       background:#2D9226; color:#FFF;
+       a, span { color:#FFF; }
+    }
     
     p {
-      padding:0 0 0 28px; background-position:center left;
+      padding:0 8px; border-bottom:1px solid #DDD;
     }
-    a {
-      line-height:40px; font-size:1.2em;
-    }
-    span {
-      display:block; background-position:center right;
+    a, span {
+      display:block; padding:0 0 0 28px; font-size:1.3em; background-position:center left; color:#555555;
     }
     
     div.map {
@@ -150,17 +153,27 @@ div.place_selector		{
     background-color:#FFF; box-shadow:0 1px 0px 0px rgba(0, 0, 0, .16); overflow:hidden; border-radius:3px; margin:0 0 8px 0;
     p.search {
       margin:0 8px;
-      input { display:block; width:100%; height:40px; line-height:40px; text-indent:23px; font-size:1.1em; .font-normal(); color:#7d7c7c; background-position:center left; }
+      input {
+        display:block; width:100%; height:44px; line-height:44px; text-indent:23px; font-size:1.2em; .font-thin(); color:#555; background-position:center left;
+        -webkit-appearance:none;
+      }
     }
     p.powered {
       border-top:1px solid #DDD;
-      height:30px; text-indent:-9000px; background-position:center;
+      height:44px; text-indent:-9000px; background-position:center;
     }
   }
   
   ul.places {
     li {
-      padding:10px; border-top:1px solid #DDD;
+      padding:14px 10px 16px 36px; border-top:1px solid #DDD;
+      
+      &.selected {
+        background:#2D9226; color:#FFF;
+        * { color:#FFF; }
+        
+        a.hover, a.hover strong { color:#FFF; }
+      }
       
       a {
         display:block; background-position:center right;
@@ -168,7 +181,7 @@ div.place_selector		{
       a.hover, a.hover strong { color:#37AB2F; }
       
       strong {
-        display:block; color:#333; font-size:1.1em; line-height:1.3em;
+        display:block; color:#333; font-size:1.2em; line-height:1.3em;
       }
     }
   }
