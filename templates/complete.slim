@@ -1,9 +1,18 @@
-div.complete
+div.complete.invitation
   div.message
     p
       strong
-        = "Mourad De Cleck "
-      | thanks you!
+        | {name}
+      = " thanks you!"
     
     p
       | You're gonna receive news from him soon.
+  
+  div.info
+    p.recommend
+      = "Be nice to "
+      strong {name}
+      = " and tell him places he shouldn't miss during his visit"
+    
+    p.start
+      a href="/recommend" Share some places
