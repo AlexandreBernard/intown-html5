@@ -89,8 +89,10 @@ Views.place = Backbone.View.extend({
         map: gmap
       });
       
-      google.maps.event.addListener(gmap, 'center_changed', function() {
-        marker.setPosition(gmap.getCenter());
+      google.maps.event.addListener(gmap, 'center_changed', function(){
+        var new_pos = gmap.getCenter();
+        marker.setPosition(new_pos);
+        view.update_location({ latitude: new_pos.lat(), longitude: new_pos.lng(), foursquare: null });
       });
     }
     else {
@@ -98,13 +100,23 @@ Views.place = Backbone.View.extend({
     }
     
     this.$el.find('div.current_location').addClass('on');
-
+    this.update_location({ latitude: position.lat(), longitude: position.lng(), foursquare: null });
+    
     Nav.run('resize');
   },
 
-  use_place: function(place, item){
+  use_place: function(link){
     this.unselect_all();
-    item.addClass('selected');
+    link.parents('li').first().addClass('selected');
+    
+    var place = this.places[link.attr('data-id')];
+    
+    this.update_location({ latitude: place.location.lat, longitude: place.location.lng, foursquare: place });
+  },
+  
+  update_location: function(location){
+    App.reply.location = location;
+    App.save_reply();
   },
   
   complete_meeting: function(){

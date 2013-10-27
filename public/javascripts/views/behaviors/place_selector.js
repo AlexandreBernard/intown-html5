@@ -71,7 +71,7 @@ Behaviors.place_selector = {
       item.find('a').link({
         run: function(e){
           e.preventDefault();
-          view.run('use_place', [places[i], item]);
+          view.run('use_place', [this]);
         }
       });
       

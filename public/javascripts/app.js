@@ -88,6 +88,8 @@ var App = {
   },
   
   send_reply: function(callback){
+    App.loader();
+    
     App.api.request('put@meetings/'+ App.meeting.id, {
       data: App.reply,
       success: function(){
@@ -218,9 +220,8 @@ var App = {
   
   get_position: function(callback){
     
-    callback({ latitude: 52.495971, longitude: 13.453954 });
+    //callback({ latitude: 52.495971, longitude: 13.453954 });
     
-    return false;
     if(navigator.geolocation){
       navigator.geolocation.getCurrentPosition(
         function(position){
