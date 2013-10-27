@@ -79,7 +79,7 @@ Views.place = Backbone.View.extend({
       this.$el.find('div.current_location').append(map);
       
       var gmap = new google.maps.Map(map.get(0), {
-        zoom: 14,
+        zoom: 16,
         center: position,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       });
@@ -120,7 +120,8 @@ Views.place = Backbone.View.extend({
   },
   
   complete_meeting: function(){
-    // validate data
+    
+    
     App.loader();
     
     window.setTimeout(function(){

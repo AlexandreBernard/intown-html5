@@ -4,11 +4,10 @@ Views.complete = Backbone.View.extend({
 
   render: function(){
     this.$el.html($(Templates.complete).html());
-    return this;
-  },
-
-  before_transition: function(){
     
+    this.$el.find('strong').html(App.meeting.trip.name);
+    
+    return this;
   }
 
 });
