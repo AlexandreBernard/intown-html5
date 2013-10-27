@@ -156,6 +156,8 @@ var App = {
   },
   
   loader: function(){
+    $.scrolltop(0);
+    
     App.loader_elmt = $('<div class="loader"><span></span></div>');
     
     var scope = Nav.view ? Nav.view.$el : $('#wrapper');

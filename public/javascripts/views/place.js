@@ -31,11 +31,10 @@ Views.place = Backbone.View.extend({
 
   after_transition: function(){
     var search = this.$el.find('.foursquare input'), view = this;
-
-    search.on('keypress', function(e){
-      if(e.keyCode == 13){
-        view.run('refresh_places', [search.val()]);
-      }
+    
+    this.$el.find('form.foursquare').on('submit', function(e){
+      e.preventDefault();
+      view.run('refresh_places', [search.val()]);
     });
   },
   
