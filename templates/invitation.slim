@@ -1,17 +1,16 @@
 div.invitation
   p.title
-    | Your friend
-    strong
-      = " Mourad De Cleck "
-    | is visiting town and wants to meet you!
+    = "Your friend "
+    strong {name}
+    = " is visiting town and wants to meet you!"
   
   div.info
-    p.location Berlin
+    p.location {location}
     p.time
-      span.from October 26th 2013
-      br
-      = " to "
-      span.to October 27th 2013
+    /  span.from October 26th 2013
+    /  br
+    /  = " to "
+    /  span.to October 27th 2013
       
     p.start
       a href="/schedule"
