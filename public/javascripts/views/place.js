@@ -34,6 +34,9 @@ Views.place = Backbone.View.extend({
     
     this.$el.find('form.foursquare').on('submit', function(e){
       e.preventDefault();
+      
+      search.blur();
+      
       view.run('refresh_places', [search.val()]);
     });
   },
