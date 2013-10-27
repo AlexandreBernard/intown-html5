@@ -47,7 +47,7 @@ module Helpers
   end
   
   def env_settings(device)
-    vars = { assets_url: ASSETS_URL, api_url: API_URL, accept_language: request.env['HTTP_ACCEPT_LANGUAGE'] }
+    vars = {}
     
     if defined?(LAT) && defined?(LNG) && LAT.to_s != '' && LNG.to_s != ''
       vars[:position] = { latitude: LAT, longitude: LNG }

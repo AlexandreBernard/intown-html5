@@ -10,16 +10,20 @@
 
 header h1 { .bgimg('intown.png', 100px auto); }
 
-div.invite {
+div.invitation {
   p.location { .bgimg('icon-location.png', 20px auto); }
   p.time { .bgimg('icon-time.png', 20px auto); }
 }
 
-div.place_selector div.current_location p { .bgimg('icon-location.png', 20px auto); }
+div.info p.start a { .bgimg('go_green.png', 8px auto); }
+div.invitation div.info a { .bgimg('go.png', 8px auto); }
+
+div.current_location a, div.current_location span { .bgimg('icon-location-green.png', 20px auto); }
+div.current_location.on a, div.current_location.on span { .bgimg('icon-location-white.png', 20px auto); }
 div.foursquare p.search input { .bgimg('icon-search.png', 20px auto); }
 div.foursquare p.powered  { .bgimg('foursquare_powered.png', 207px auto); }
 
-ul.availabilities input:checked, div.place_selector div.current_location span.selected, ul.places li.selected a { .bgimg('check.png', 13px auto); }
-
 div.input.check input { .bgimg('checkbox.png', 20px auto); }
 div.input.check input:checked { .bgimg('checkbox-checked.png', 20px auto); }
+
+div.loader span { .bgimg('loader.png', 100px auto); }

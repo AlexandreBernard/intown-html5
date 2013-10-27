@@ -153,7 +153,7 @@ class MobileDevice
       js << "alexbmobile/src/jquery_fixes"
     end
     
-    js << "routes" << "app" << "application.api" << "application.auth"
+    js << "routes" << "app" << "application.api"
     
     framework = ["support", "plugins/link", "Nav", "Ui", "Backbone.history-ext", "Backbone.view.ext", "Animation"]
     
@@ -167,7 +167,7 @@ class MobileDevice
       js << "alexbmobile/src/#{file}"
     end
     
-    ['invitation', 'behaviors/place_selector'].each do |view|
+    ['invitation', 'schedule', 'place', 'complete', 'decline', 'behaviors/place_selector'].each do |view|
       js << "views/#{view}"
     end
     
