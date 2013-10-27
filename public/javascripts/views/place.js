@@ -17,14 +17,7 @@ Views.place = Backbone.View.extend({
     this.$el.find('p.start a').link({
       run: function(e, url){
         e.preventDefault();
-        Nav.go(url, 'slide');
-      }
-    });
-
-    this.$el.find('a.add_place').link({
-      run: function(e){
-        e.preventDefault();
-        view.run('select_place');
+        view.complete_meeting();
       }
     });
 
@@ -112,6 +105,21 @@ Views.place = Backbone.View.extend({
   use_place: function(place, item){
     this.unselect_all();
     item.addClass('selected');
+  },
+  
+  complete_meeting: function(){
+    // validate data
+    App.loader();
+    
+    window.setTimeout(function(){
+      Nav.go('/complete', 'slide', { after_transition: function(){
+        if(App.loader_elmt){
+          App.loader_elmt.remove();
+          App.loader_elmt = null;
+        }
+      }});
+    }, 2000);
+    
   }
 
 });

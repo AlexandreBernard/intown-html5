@@ -12,6 +12,9 @@
 .font-thin(){
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; font-weight:300;
 }
+.loader(){
+  -webkit-animation-name:spinnerRotate; -webkit-animation-duration:2s; -webkit-animation-iteration-count:infinite; -webkit-animation-timing-function:linear;
+}
 
 body    {
   .font-thin();
@@ -121,8 +124,15 @@ nav.steps {
 div.submit  {
   padding:10px; text-align:center;
   
-  .btn  {
+  .btn {
     margin:0 auto;
+  }
+}
+
+div.loader {
+  position:absolute; top:0; left:0; right:0; bottom:0; background:#2D9226;
+  span {
+    width:100px; height:100px; position:absolute; top:120px; left:50%; margin-left:-50px; .loader();
   }
 }
 
@@ -186,3 +196,19 @@ div.place	{
     }
   }
 }
+
+div.complete {
+  color:#FFF;
+  
+  div.message {
+    padding:34px 38px; background:#2D9226; text-align:center; font-size:1.8em;
+    
+    p {
+      padding:0 0 20px 0;
+    }
+  }
+}
+
+/* loaders */
+@-webkit-keyframes spinnerRotate { from { -webkit-transform:rotate(0deg); } to { -webkit-transform:rotate(360deg); } }
+

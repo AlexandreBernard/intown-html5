@@ -9,19 +9,17 @@ var App = {
       this.params.os_offset = 60;
     }
     
-    window.setTimeout(function(){
-      Nav.initialize({
-        remove_views:         false,
-        no_access_animation:  'slide',
-        ui_delay: 500
-      });
-    }, 500);
+    App.loader();
     
-    App.listen();
+    Nav.initialize({
+      remove_views:         false,
+      no_access_animation:  'slide',
+      ui_delay: 500
+    });
   },
   
   after_initialize: function(){
-    
+    window.setTimeout(App.end_loading, 800);
   },
   
   before_transition: function(){
@@ -84,13 +82,6 @@ var App = {
     Nav.run('resize');
   },
   
-  listen: function(){
-    App.listener = window.setTimeout(function(){
-      
-      App.listen();
-    }, 2000);
-  },
-  
   get_auto_height: function(elmt){
     var clone = elmt.clone();
     clone.css({ visibility: 'hidden', height: 'auto' });
@@ -100,6 +91,26 @@ var App = {
     clone.remove();
     
     return height;
+  },
+  
+  loader: function(){
+    App.loader_elmt = $('<div class="loader"><span></span></div>');
+    
+    var scope = Nav.view ? Nav.view.$el : $('#wrapper');
+    
+    scope.append(App.loader_elmt.css({ opacity: 0 }));
+    
+    App.loader_elmt.animate({ opacity: 1 });
+  },
+  
+  end_loading: function(callback){
+    if(App.loader_elmt){
+      App.loader_elmt.animate({ opacity: 0 }, { complete: function(){
+        App.loader_elmt.remove();
+        App.loader_elmt = null;
+        if(callback) callback();
+      }});
+    }
   },
   
   get_position: function(callback){

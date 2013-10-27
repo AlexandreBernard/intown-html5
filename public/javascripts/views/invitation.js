@@ -2,10 +2,6 @@ Views.invitation = Backbone.View.extend({
   
   className: 'invitation',
   
-  initialize: function(){
-    this.attach_behavior('place_selector');
-  },
-  
   render: function(){
     this.$el.html($(Templates.invitation).html());
     return this;

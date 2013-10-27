@@ -167,7 +167,7 @@ class MobileDevice
       js << "alexbmobile/src/#{file}"
     end
     
-    ['invitation', 'schedule', 'place', 'behaviors/place_selector'].each do |view|
+    ['invitation', 'schedule', 'place', 'complete', 'behaviors/place_selector'].each do |view|
       js << "views/#{view}"
     end
     
