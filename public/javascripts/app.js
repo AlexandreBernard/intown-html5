@@ -24,7 +24,7 @@ var App = {
       }
       App.launch();
     }
-    else {
+    else if(meeting_id.length > 0){
       App.loader();
       
       App.api.request('get@meetings/'+ meeting_id, {
@@ -32,6 +32,9 @@ var App = {
           App.save_meeting(this);
         }
       });
+    }
+    else {
+      $('#wrapper').append($(Templates.error).html());
     }
   },
   
