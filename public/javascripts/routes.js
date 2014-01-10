@@ -1,14 +1,11 @@
 var Routes = {
-  
-  routes: {
-    "recommend":   "recommend",
-    "decline":     "decline",
-    "complete":    "complete",
-    "place":       "place",
-    "schedule":    "schedule",
-    "*actions":    "invitation"
-  }
-  
+  "recommend":   "recommend",
+  "decline":     "decline",
+  "complete":    "complete",
+  "place":       "place",
+  "schedule":    "schedule",
+  ":id":         "invitation",
+  "_root":       "invitation"
 };
 
 var Views = {}, Behaviors = {};

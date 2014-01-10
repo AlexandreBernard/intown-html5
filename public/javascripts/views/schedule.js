@@ -1,4 +1,4 @@
-Views.schedule = Backbone.View.extend({
+Views.define('schedule', {
 
   className: 'schedule',
 
@@ -37,7 +37,7 @@ Views.schedule = Backbone.View.extend({
   },
   
   validate: function(url){
-    var dates = _.keys(App.reply.timeslots);
+    var dates = $.keys(App.reply.timeslots);
     
     if(dates.length > 0){
       Nav.go(url, 'slide');
@@ -58,7 +58,7 @@ Views.schedule = Backbone.View.extend({
       this.$el.find('div.days a').each(function(){
         var link = $(this);
         
-        if(App.reply.timeslots[link.attr('data-day')] && _.indexOf(App.reply.timeslots[link.attr('data-day')], parseInt(link.attr('data-slot'))) > -1){
+        if(App.reply.timeslots[link.attr('data-day')] && $.inArray(parseInt(link.attr('data-slot')), App.reply.timeslots[link.attr('data-day')]) > -1){
           link.addClass('on');
         }
       });
@@ -84,11 +84,11 @@ Views.schedule = Backbone.View.extend({
     App.reply.timeslots = App.reply.timeslots || {};
     App.reply.timeslots[date] = App.reply.timeslots[date] || [];
     
-    if(_.indexOf(App.reply.timeslots[date], slot) == -1){
+    if($.inArray(slot, App.reply.timeslots[date]) == -1){
       App.reply.timeslots[date].push(slot);
     }
     else {
-      App.reply.timeslots[date] = _(App.reply.timeslots[date]).without(slot);
+      App.reply.timeslots[date] = App.reply.timeslots[date].without(slot);
       if(App.reply.timeslots[date].length == 0){
         delete App.reply.timeslots[date];
       }

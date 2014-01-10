@@ -1,4 +1,4 @@
-Views.recommend = Backbone.View.extend({
+Views.define('recommend', {
 
   className: 'schedule',
   

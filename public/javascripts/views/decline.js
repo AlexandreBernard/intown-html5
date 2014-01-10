@@ -1,4 +1,4 @@
-Views.decline = Backbone.View.extend({
+Views.define('decline', {
 
   className: 'complete',
 

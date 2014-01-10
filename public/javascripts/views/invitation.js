@@ -1,4 +1,4 @@
-Views.invitation = Backbone.View.extend({
+Views.define('invitation', {
   
   className: 'invitation',
   

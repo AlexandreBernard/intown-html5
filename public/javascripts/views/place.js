@@ -1,4 +1,4 @@
-Views.place = Backbone.View.extend({
+Views.define('place', {
 
   className: 'schedule',
 

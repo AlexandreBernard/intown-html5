@@ -8,7 +8,7 @@ App.api = {
     if(!params.data) params.data = {};
     
     if(params.vars){
-      _.each(params.vars, function(value, name){
+      $.each(params.vars, function(name, value){
         data.url = data.url.replace('{'+name+'}', value);
       });
     }

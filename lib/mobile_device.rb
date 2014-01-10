@@ -136,11 +136,11 @@ class MobileDevice
     js = []
     
     if device[:os] == 'Windows Phone'
-      ['jquery-1.7.2', 'underscore-1.3.1', 'backbone-0.9.2', 'ie.scrolltop', 'jquery.placeholder-2.0.7'].each do |file|
+      ['jquery-1.7.2', 'ie.scrolltop', 'jquery.placeholder-2.0.7'].each do |file|
         js << "alexbmobile/lib/#{file}"
       end
     else
-      ['zepto-0.8', 'underscore-1.3.1', 'backbone-0.9.2', 'zepto.clone', 'zepto.scrolltop', 'hoover'].each do |file|
+      ['zepto-1.1.2', 'zepto.scrolltop', 'hoover'].each do |file|
         js << "alexbmobile/lib/#{file}"
       end
     end
@@ -155,7 +155,7 @@ class MobileDevice
     
     js << "routes" << "app" << "application.api"
     
-    framework = ["support", "plugins/link", "Nav", "Ui", "Backbone.history-ext", "Backbone.view.ext", "Animation"]
+    framework = ["support", "plugins/link", "Nav", "Ui", "Views", "Router", "Animation"]
     
     if device[:os] == 'Windows Phone'
       framework << "Animation.oldschool" << "simulate_fixed" << "plugins/dateInput" << "windows_phone_fixes"

@@ -16,9 +16,9 @@ var App = {
     
     this.intercept_foursquare_token();
     
-    var meeting_id = window.location.hash.replace('#', '');
+    var meeting_id = window.location.hash.replace('#!', '');
     
-    if(meeting_id in Routes.routes && window.localStorage && window.localStorage.getItem('current_meeting')){
+    if(meeting_id in Routes && window.localStorage && window.localStorage.getItem('current_meeting')){
       meeting_id = window.localStorage.getItem('current_meeting');
     }
     
@@ -138,9 +138,8 @@ var App = {
     if(Nav.current_transition){
       heights.push(Nav.current_transition.prev_view.$el.height());
     }
-    var max_height = _.max(heights);
     
-    Nav.elmt.css({ height: max_height });
+    Nav.elmt.css({ height: heights.max() });
   },
   
   reset_and_resize: function(){
@@ -279,10 +278,25 @@ Date.prototype.addDays = function(days) {
   return dat;
 }
 
-/* small fix */
-$.fn.prop = $.fn.prop || $.fn.attr;
+Array.prototype.without = function(exclude){
+  var new_array = [];
+  for(var i=0; i<this.length; i++){
+    if(this[i] != exclude){
+      new_array.push(this[i]);
+    }
+  }
+  return new_array;
+};
 
-/* add trim to string */
+Array.prototype.max = function(){ return Math.max.apply(null, this); };
+Array.prototype.min = function(){ return Math.min.apply(null, this); };
+Array.prototype.first = function(){ return this[0]; };
+Array.prototype.last = function(){ return this[this.length-1]; };
+
+$.keys = function(object){
+  return $.map(object, function(v, k){ return k; });
+};
+
 String.prototype.trim = function(){ return this.replace(/^\s+/, '').replace(/\s+$/, ''); };
 
 $(document).ready(function(){

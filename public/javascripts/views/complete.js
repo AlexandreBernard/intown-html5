@@ -1,4 +1,4 @@
-Views.complete = Backbone.View.extend({
+Views.define('complete', {
 
   className: 'complete',
 
