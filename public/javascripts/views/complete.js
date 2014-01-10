@@ -15,16 +15,12 @@ Views.define('complete', {
       run: function(e, url){
         e.preventDefault();
         
-        /*
         if(App.foursquare_token){
           Nav.go(url, 'slide');
         }
         else {
           App.authenticate_foursquare();
         }
-        */
-        
-        alert('Feature coming soon.');
       }
     });
   }

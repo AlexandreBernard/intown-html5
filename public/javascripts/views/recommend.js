@@ -8,6 +8,7 @@ Views.define('recommend', {
     }
     
     this.attach_behavior('place_selector');
+    this.place_search_path = '/users/self/checkins';
   },
   
   render: function(){
@@ -18,8 +19,26 @@ Views.define('recommend', {
     return this;
   },
   
+  before_transition: function(){
+    var view = this;
+    
+    this.$el.find('p.start a').link({
+      run: function(){
+        view.send_recs();
+      }
+    });
+  },
+  
   after_transition: function(){
     this.run('refresh_places', ['', {  }]);
+  },
+  
+  use_place: function(elmt){
+    elmt.parents('li').first().toggleClass('selected');
+  },
+  
+  send_recs: function(){
+    alert('sending');
   }
 
 });

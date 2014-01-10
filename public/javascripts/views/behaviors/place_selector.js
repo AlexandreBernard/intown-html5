@@ -14,8 +14,11 @@ Behaviors.place_selector = {
     App.get_position(function(position){
       var params = {
         ll:             position.latitude +','+ position.longitude,
-        v:              "20130823"
+        v:              "20130823",
+        limit:          200
       };
+      
+      view.position = { lat: position.latitude, lng: position.longitude };
       
       if(App.foursquare_token){
         params.oauth_token = App.foursquare_token;
@@ -30,12 +33,15 @@ Behaviors.place_selector = {
       }
       
       view.requests.push($.ajax({
-        url: 'https://api.foursquare.com/v2/venues/search',
+        url: 'https://api.foursquare.com/v2'+ (view.place_search_path || '/venues/search'),
         data: params,
         dataType: 'json',
         success: function(response){
           if(response.response.venues && response.response.venues.length > 0){
             view.run('display_places', [response.response.venues]);
+          }
+          else if(response.response.checkins && response.response.checkins.items.length > 0){
+            view.run('display_places', [$.map(response.response.checkins.items, function(c){ return c.venue; })]);
           }
         }
       }));
@@ -71,6 +77,8 @@ Behaviors.place_selector = {
       item.find('a')
         .append('<strong>'+ places[i].name +'</strong>')
         .append('<span>'+ this.behaviors.place_selector.foursquare_location(places[i]) +'</span>');
+      
+      // var distance = App.distance(view.position, places[i].location);
       
       list.append(item);
       

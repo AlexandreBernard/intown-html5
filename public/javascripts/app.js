@@ -254,20 +254,35 @@ var App = {
   },
   
   intercept_foursquare_token: function(){
+    if(window.localStorage && window.localStorage.getItem('foursquare_token')){
+      App.foursquare_token = window.localStorage.getItem('foursquare_token');
+    }
+    
     if(window.location.hash.indexOf('access_token') > -1){
-      var token = window.location.hash.split('#').reverse()[0].split('=').reverse()[0];
-      
-      if(window.localStorage){
-        window.localStorage.setItem('foursquare_token', token);
+      if(!App.foursquare_token){
+        var token = window.location.hash.split('#').reverse()[0].split('=').reverse()[0];
+        
+        if(window.localStorage){
+          window.localStorage.setItem('foursquare_token', token);
+        }
       }
       
-      window.location.replace('#recommend');
+      window.location.replace('#!recommend');
     }
-    else {
-      if(window.localStorage && window.localStorage.getItem('foursquare_token')){
-        App.foursquare_token = window.localStorage.getItem('foursquare_token');
-      }
-    }
+  },
+  
+  distance: function(point1, point2) {
+    function deg2rad(deg){ return deg * (Math.PI/180); }
+    
+    var R = 6371, // Radius of the earth in km
+    dLat = deg2rad(point2.lat - point1.lat),
+    dLon = deg2rad(point2.lng - point1.lng),
+    a =
+      Math.sin(dLat/2) * Math.sin(dLat/2) +
+      Math.cos(deg2rad(point1.lat)) * Math.cos(deg2rad(point2.lat)) *
+      Math.sin(dLon/2) * Math.sin(dLon/2),
+    c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+    return R * c;
   }
     
 };
