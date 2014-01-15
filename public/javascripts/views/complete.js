@@ -5,7 +5,7 @@ Views.define('complete', {
   render: function(){
     this.$el.html($(Templates.complete).html());
     
-    this.$el.find('strong').html(App.meeting.trip.name);
+    this.$el.find('strong').html(App.meeting.user.name);
     
     return this;
   },

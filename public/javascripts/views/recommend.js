@@ -14,7 +14,7 @@ Views.define('recommend', {
   render: function(){
     this.$el.html($(Templates.recommend).html());
 
-    this.$el.find('strong').html(App.meeting.trip.name);
+    this.$el.find('strong').html(App.meeting.user.name);
 
     return this;
   },
@@ -38,7 +38,22 @@ Views.define('recommend', {
   },
   
   send_recs: function(){
-    alert('sending');
+    var view = this;
+    
+    App.api.request('put@meetings/'+ App.meeting.id, {
+      data: { recommendations_attributes: $.map(this.$el.find('ul.places li.selected a'), function(item){
+        return { foursquare: view.places[$(item).attr('data-id')] };
+      })},
+      success: function(){
+        console.log(this);
+        if(this.code == 204){
+          
+        }
+        else {
+          
+        }
+      }
+    });
   }
 
 });

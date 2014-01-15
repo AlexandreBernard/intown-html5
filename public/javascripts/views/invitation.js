@@ -5,7 +5,7 @@ Views.define('invitation', {
   render: function(){
     this.$el.html($(Templates.invitation).html());
     
-    this.$el.find('p.title strong').html(App.meeting.trip.name);
+    this.$el.find('p.title strong').html(App.meeting.user.name);
     this.$el.find('p.location').html(App.meeting.trip.location);
     
     var from = App.date(App.meeting.trip.from), to = App.date(App.meeting.trip.to);
