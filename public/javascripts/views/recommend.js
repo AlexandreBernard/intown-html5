@@ -8,7 +8,6 @@ Views.define('recommend', {
     }
     
     this.attach_behavior('place_selector');
-    this.place_search_path = '/users/self/checkins';
   },
   
   render: function(){
@@ -27,10 +26,20 @@ Views.define('recommend', {
         view.send_recs();
       }
     });
+    
+    var search = this.$el.find('.foursquare input'), view = this;
+    
+    this.$el.find('form.foursquare').on('submit', function(e){
+      e.preventDefault();
+      
+      search.blur();
+      
+      view.run('refresh_places', [search.val()]);
+    });
   },
   
   after_transition: function(){
-    this.run('refresh_places', ['', {  }]);
+    this.run('refresh_places', ['', { api_path: '/users/self/checkins' }]);
   },
   
   use_place: function(elmt){
@@ -47,7 +56,6 @@ Views.define('recommend', {
         return { foursquare: view.places[$(item).attr('data-id')] };
       })},
       success: function(){
-        console.log(this);
         if(this.code == 204){
           Nav.go('/thanks', 'slide', { after_transition: function(){
             if(App.loader_elmt){

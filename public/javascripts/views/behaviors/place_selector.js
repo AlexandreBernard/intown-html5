@@ -5,7 +5,7 @@ Behaviors.place_selector = {
   },
   
   refresh_places: function(query, options){
-    var view = this, loader = $('<span class="bjr_loader"><span></span></span>');
+    var view = this, options = options || {}, loader = $('<span class="bjr_loader"><span></span></span>');
     
     loader.css({ position: 'absolute', top:160, left: '50%', 'margin-left': -14 });
     
@@ -33,7 +33,7 @@ Behaviors.place_selector = {
       }
       
       view.requests.push($.ajax({
-        url: 'https://api.foursquare.com/v2'+ (view.place_search_path || '/venues/search'),
+        url: 'https://api.foursquare.com/v2'+ (options.api_path || '/venues/search'),
         data: params,
         dataType: 'json',
         success: function(response){
