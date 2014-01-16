@@ -34,6 +34,11 @@ var App = {
       
       App.api.request('get@meetings/'+ meeting_id, {
         success: function(){
+          console.log(this)
+          /* tmp */
+          if(this.data.user == null){
+            this.data.user = { name: "Alex" }
+          }
           App.save_meeting(this);
         }
       });

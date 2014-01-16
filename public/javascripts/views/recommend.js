@@ -40,6 +40,8 @@ Views.define('recommend', {
   send_recs: function(){
     var view = this;
     
+    App.loader();
+    
     App.api.request('put@meetings/'+ App.meeting.id, {
       data: { recommendations_attributes: $.map(this.$el.find('ul.places li.selected a'), function(item){
         return { foursquare: view.places[$(item).attr('data-id')] };
@@ -47,7 +49,12 @@ Views.define('recommend', {
       success: function(){
         console.log(this);
         if(this.code == 204){
-          
+          Nav.go('/thanks', 'slide', { after_transition: function(){
+            if(App.loader_elmt){
+              App.loader_elmt.remove();
+              App.loader_elmt = null;
+            }
+          }});
         }
         else {
           

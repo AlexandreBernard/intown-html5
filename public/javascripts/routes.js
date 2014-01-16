@@ -1,5 +1,6 @@
 var Routes = {
   "recommend":   "recommend",
+  "thanks":      "thanks",
   "decline":     "decline",
   "complete":    "complete",
   "place":       "place",
